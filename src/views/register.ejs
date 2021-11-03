@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Register Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="./styles/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="container">
+            <div class="row mt-5">
+                <div class="col-md-6 m-auto">
+                    <div class="card card-body">
+                        <h1 class="text-center mb-3">
+                            <i class="fas fa-user-plus"></i> Register
+                        </h1>
+                        <div class="col-7 login-left">
+                        </div>
+
+
+                        <div>
+                            <% if(errors !="" ) { %>
+                                <% errors.forEach((item)=> { %>
+                                    <div class="alert alert-danger">
+                                        <%- item %>
+                                    </div>
+                                    <% }); %>
+                                        <% } %>
+                        </div>
+                        <form method="POST" action="/register">
+                            <div class="form-group">
+                                <label for="nom">Nom:</label>
+                                <input type="text" class="form-control" name="nom" id="nom" placeholder="Nom">
+                            </div>
+                            <div class="form-group">
+                                <label for="nom">Prénom:</label>
+                                <input type="text" class="form-control" name="prenom" id="prenom" placeholder="Prénom">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Address Email: (*)</label>
+                                <input type="email" name="email" class="form-control" id="email"
+                                    placeholder="Entrer email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Mot de passe: (*)</label>
+                                <input type="password" name="mot_de_passe" class="form-control" id="mot_de_passe"
+                                    placeholder="Mot de passe" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="passwordConfirmation">Confirmation mot de passe: (*)</label>
+                                <input type="password" class="form-control" name="passwordConfirmation"
+                                    id="passwordConfirmation" placeholder="Confirmation mot de passe" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="checkbox" id="is_admin" name="is_admin">
+                                <label for="Admin">Admin</label><br>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">
+                                Enregistrer
+                            </button>
+                            <!-- <form action="/" class="d-inline" method="get">
+                                <button type="submit" class="btn btn-primary btn-block">
+                                    <i class="fas fa-home"></i>
+                                </button>
+                            </form> -->
+                            <!-- <div class="row">
+                                <div class="md-6">
+
+                                    <button type="submit" class="btn btn-primary btn-block">
+                                        Enregistrer</button>
+                                </div>
+                                <div class="md-6">
+
+                                    <form action="/listeUser/<%- user.id %>" class="d-inline" method="get">
+                                        <button type="submit" class="btn action-button">
+                                            <i class="fas fa-user-times"></i>
+                                        </button>
+                                    </form>
+                                </div>
+
+                            </div> -->
+                        </form>
+                        <br />
+                        <p>
+                            Si vous voulez retourner sur l'accueil. <a href="/admin">Veuillez cliquez ici.</a>.
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+</body>
+
+
+</html>

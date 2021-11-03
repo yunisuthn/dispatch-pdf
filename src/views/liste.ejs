@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Home page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/styles/css/style.css">
+    <link rel="stylesheet" href="/styles/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+    <div>
+        <form method="post" action="/logout" style="margin-top: 5%; text-align: right; margin-right: 4%; ">
+            <button class="btn logout">Log out</button>
+        </form>
+        <div class='container'>
+            <br />
+            <br />
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Prénom</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% users.forEach((user, i)=>{ %>
+                        <tr>
+                            <td>
+                                <%- i+1 %>
+                            </td>
+                            <td>
+                                <%- user.nom %>
+                            </td>
+                            <td>
+                                <%- user.prenom %>
+                            </td>
+                            <td>
+                                <%- user.email %>
+                            </td>
+                            <td>
+                                <a href="/updateUser/<%- user.id %>/<%- admin.id %>" class="btn action-button">
+                                    <i class="fas fa-user-edit"></i></a>
+                                <form action="/deleteUser/<%- user.id %>" class="d-inline" method="post">
+                                    <button type="submit" class="btn action-button action-delete">
+                                        <i class="fas fa-user-times"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                        <% })%>
+
+                </tbody>
+            </table>
+            <form action="/admin" class="d-inline" method="get">
+                <button type="submit" class="btn action-button action-back">
+                    <i class="fas fa-backward"></i>
+                </button>
+            </form>
+            <form action="/register" class="d-inline" method="get">
+                <button type="submit" class="btn action-create">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
